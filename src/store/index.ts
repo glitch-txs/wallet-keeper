@@ -62,7 +62,12 @@ export const useWalletStore = create<WalletStore>()(
 		}),
 		{
 			name: 'wallet-storage',
-			partialize: (state) => ({ wallets: state.wallets, activeWallet: state.activeWallet, tokens: state.tokens, activeChain: state.activeChain }),
+			partialize: (state) => ({
+				wallets: state.wallets,
+				activeWallet: state.activeWallet,
+				tokens: state.tokens,
+				activeChain: state.activeChain,
+			}),
 		},
 	),
 )

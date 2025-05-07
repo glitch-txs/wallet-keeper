@@ -28,10 +28,10 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 
 		if (newErrors.walletName || newErrors.password) return
 		const newWallet = addWallet({ name: walletName, password })
-		if(newWallet){
-			toast.success("Wallet Created Successfully!")
-		}else{
-			toast.error("An error occurred.")
+		if (newWallet) {
+			toast.success('Wallet Created Successfully!')
+		} else {
+			toast.error('An error occurred.')
 		}
 		setIsModalOpen(false)
 		setWalletName('')

@@ -28,10 +28,10 @@ const Balance: React.FC = () => {
 		setIsModalOpen(false)
 	}
 
-	const networks = useMemo(()=>{
-		const testnetNetworks = Object.values(viemChains).filter((chain)=> chain.testnet) 
+	const networks = useMemo(() => {
+		const testnetNetworks = Object.values(viemChains).filter((chain) => chain.testnet)
 		return testnetNetworks
-	},[])
+	}, [])
 
 	return (
 		<div className={styles.container}>

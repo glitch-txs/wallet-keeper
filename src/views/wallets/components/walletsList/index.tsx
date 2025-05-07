@@ -36,7 +36,7 @@ const WalletList: React.FC = () => {
 
 	function handleDelete(address: string) {
 		removeWallet(address)
-		toast.success("Wallet Deleted Successfully!")
+		toast.success('Wallet Deleted Successfully!')
 	}
 
 	function handleViewKey(address: string) {

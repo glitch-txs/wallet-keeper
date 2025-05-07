@@ -14,22 +14,28 @@ type BalanceCardProps = {
 }
 
 const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) => {
-
-	const { data: tokenWithBalance, isLoading, isError, error } = useQuery({
+	const {
+		data: tokenWithBalance,
+		isLoading,
+		isError,
+		error,
+	} = useQuery({
 		queryKey: ['balance', token?.address, chain.id, userAddress],
 		queryFn: async () => await getTokenWithBalance({ chain, userAddress, token }),
 		enabled: Boolean(userAddress),
 	})
 
-	useEffect(()=>{
-		toast.error("Error while fetching balance. ")
+	useEffect(() => {
+		toast.error('Error while fetching balance. ')
 		console.error(error?.message)
-	},[isError])
+	}, [isError])
 
 	const removeToken = useWalletStore((state) => state.removeToken)
 
-	const balance = useMemo(()=> {
-		return tokenWithBalance ? `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${(tokenWithBalance?.formattedBalance) || 0}` : undefined
+	const balance = useMemo(() => {
+		return tokenWithBalance
+			? `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${tokenWithBalance?.formattedBalance || 0}`
+			: undefined
 	}, [token, tokenWithBalance, chain])
 
 	return (
@@ -39,13 +45,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) 
 				{Boolean(token) || <span className={styles.nativeTag}>Native</span>}
 			</div>
 			<div className={styles.rightSection}>
-				<p className={styles.value}>
-					{balance ||
-					(isLoading
-						? 'Loading...'
-						: '-')
-					}
-				</p>
+				<p className={styles.value}>{balance || (isLoading ? 'Loading...' : '-')}</p>
 
 				{token && (
 					<button className={styles.iconButton} onClick={() => removeToken(token.address)}>
