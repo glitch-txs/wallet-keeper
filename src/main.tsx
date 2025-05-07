@@ -1,10 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import './global.css'
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
+import Wallets from './views/wallets'
+import Balance from './views/balance'
+import Navbar from './layout/navbar'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Balance />} />
+        <Route path="/wallets" element={<Wallets />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 )
