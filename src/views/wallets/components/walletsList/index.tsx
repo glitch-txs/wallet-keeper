@@ -7,6 +7,7 @@ import Modal from '../../../../components/modal'
 import PasswordForm from './modalViews/passwordForm'
 import WalletInfo from './modalViews/walletInfo'
 import { decryptPrivateKey } from '../../../../utils/crypto'
+import toast from 'react-hot-toast'
 
 const KEY_MODAL_VIEWS = {
 	REQUEST_PASSWORD: 'requestPassword',
@@ -35,6 +36,7 @@ const WalletList: React.FC = () => {
 
 	function handleDelete(address: string) {
 		removeWallet(address)
+		toast.success("Wallet Deleted Successfully!")
 	}
 
 	function handleViewKey(address: string) {

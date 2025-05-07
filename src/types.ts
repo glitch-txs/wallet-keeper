@@ -20,9 +20,10 @@ export interface WalletStore {
 	activeWallet?: UserWallet
 	activeChain: Chain
 	tokens: Token[]
-	addWallet: ({ name, password }: { name: string; password: string }) => void
+	addWallet: ({ name, password }: { name: string; password: string }) => UserWallet
 	removeWallet: (address: string) => void
 	setActiveWallet: (address: string) => void
-	addToken: ({ address, chain }: { address: Address; chain: Chain }) => Promise<void>
+	addToken: ({ address, chain }: { address: Address; chain: Chain }) => Promise<Token>
 	removeToken: (address: string) => void
+	setActiveChain: (chain: Chain) => void
 }

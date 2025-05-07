@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { WalletStore } from '../types'
-import { mainnet, type Chain } from 'viem/chains'
+import { sepolia, type Chain } from 'viem/chains'
 import type { Address } from 'viem'
 import { getTokenProperties } from '../utils/token'
 import { generateWallet } from '../utils/wallet'
@@ -11,7 +11,7 @@ export const useWalletStore = create<WalletStore>()(
 		(set, get) => ({
 			wallets: [],
 			activeWallet: undefined,
-			activeChain: mainnet,
+			activeChain: sepolia,
 			tokens: [],
 
 			addWallet: ({ name, password }: { name: string; password: string }) => {
@@ -20,6 +20,8 @@ export const useWalletStore = create<WalletStore>()(
 					wallets: [...state.wallets, newWallet],
 				}))
 				set({ activeWallet: newWallet })
+
+				return newWallet
 			},
 
 			removeWallet: (address: string) => {
@@ -44,6 +46,8 @@ export const useWalletStore = create<WalletStore>()(
 				set((state) => ({
 					tokens: [...state.tokens, newToken],
 				}))
+
+				return newToken
 			},
 
 			removeToken: (address: string) => {
@@ -51,10 +55,14 @@ export const useWalletStore = create<WalletStore>()(
 					tokens: state.tokens.filter((t) => t.address !== address),
 				}))
 			},
+
+			setActiveChain: (chain: Chain) => {
+				set({ activeChain: chain })
+			},
 		}),
 		{
 			name: 'wallet-storage',
-			partialize: (state) => ({ wallets: state.wallets, activeWallet: state.activeWallet }),
+			partialize: (state) => ({ wallets: state.wallets, activeWallet: state.activeWallet, tokens: state.tokens, activeChain: state.activeChain }),
 		},
 	),
 )

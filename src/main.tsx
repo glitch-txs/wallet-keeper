@@ -5,6 +5,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import Navbar from './layout/navbar'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ROUTES } from './views/routes'
+import { Toaster } from 'react-hot-toast'
 
 const queryClient = new QueryClient()
 
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')!).render(
 						<Route path={path} element={<Element />} />
 					))}
 				</Routes>
+				<Toaster />
 			</BrowserRouter>
 		</QueryClientProvider>
 	</StrictMode>,

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styles from './index.module.css'
 import { getTokenWithBalance } from '../../../../utils/balance'
 import type { Address, Chain } from 'viem'
 import type { Token } from '../../../../types'
 import { useQuery } from '@tanstack/react-query'
 import { useWalletStore } from '../../../../store'
+import toast from 'react-hot-toast'
 
 type BalanceCardProps = {
 	userAddress: Address
@@ -13,13 +14,23 @@ type BalanceCardProps = {
 }
 
 const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) => {
-	const { data: tokenWithBalance, isLoading } = useQuery({
+
+	const { data: tokenWithBalance, isLoading, isError, error } = useQuery({
 		queryKey: ['balance', token?.address, chain.id, userAddress],
 		queryFn: async () => await getTokenWithBalance({ chain, userAddress, token }),
 		enabled: Boolean(userAddress),
 	})
 
+	useEffect(()=>{
+		toast.error("Error while fetching balance. ")
+		console.error(error?.message)
+	},[isError])
+
 	const removeToken = useWalletStore((state) => state.removeToken)
+
+	const balance = useMemo(()=> {
+		return tokenWithBalance ? `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${(tokenWithBalance?.formattedBalance) || 0}` : undefined
+	}, [token, tokenWithBalance, chain])
 
 	return (
 		<div className={styles.card}>
@@ -29,9 +40,11 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) 
 			</div>
 			<div className={styles.rightSection}>
 				<p className={styles.value}>
-					{isLoading
-						? '-'
-						: `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${tokenWithBalance?.formattedBalance}`}
+					{balance ||
+					(isLoading
+						? 'Loading...'
+						: '-')
+					}
 				</p>
 
 				{token && (

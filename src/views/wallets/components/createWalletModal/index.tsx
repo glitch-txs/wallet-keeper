@@ -4,6 +4,7 @@ import styles from './index.module.css'
 import Input from '../../../../components/input'
 import Button from '../../../../components/button'
 import { useWalletStore } from '../../../../store'
+import toast from 'react-hot-toast'
 
 type CreateWalletModalProps = {
 	setIsModalOpen: (isModalOpen: boolean) => void
@@ -26,8 +27,12 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 		setErrors(newErrors)
 
 		if (newErrors.walletName || newErrors.password) return
-		/**TODO: Validate account creation */
-		addWallet({ name: walletName, password })
+		const newWallet = addWallet({ name: walletName, password })
+		if(newWallet){
+			toast.success("Wallet Created Successfully!")
+		}else{
+			toast.error("An error occurred.")
+		}
 		setIsModalOpen(false)
 		setWalletName('')
 		setPassword('')
