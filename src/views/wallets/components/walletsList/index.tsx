@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import WalletCard from '../walletCard'
 import styles from './index.module.css'
-import { useWalletStore } from '../../../../store'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../../../../components/modal'
 import PasswordForm from './modalViews/passwordForm'
 import WalletInfo from './modalViews/walletInfo'
 import { decryptPrivateKey } from '../../../../utils/crypto'
 import toast from 'react-hot-toast'
+import { useWalletStore } from '../../../../store'
 
 const KEY_MODAL_VIEWS = {
 	REQUEST_PASSWORD: 'requestPassword',

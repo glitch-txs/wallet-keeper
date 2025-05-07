@@ -14,9 +14,9 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword }) => {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
 
-		if (!password) {
-			setError('Password is required.')
-		}
+		setError(password ? "" : 'Password is required.')
+
+		if (!password) return
 		onSubmitPassword(password)
 	}
 

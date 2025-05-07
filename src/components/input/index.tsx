@@ -22,8 +22,8 @@ const Input: React.FC<InputProps> = ({
 }) => {
 	return (
 		<div className={styles.inputContainer}>
-			<label className={styles.label}>{label}</label>
-			<input className={styles.input} type={type} placeholder={placeholder} value={value} onChange={onChange} />
+			<label className={styles.label} htmlFor={label}>{label}</label>
+			<input id={label} className={styles.input} type={type} placeholder={placeholder} value={value} onChange={onChange} />
 			{required && errorMessage && <span className={styles.error}>{errorMessage}</span>}
 		</div>
 	)
