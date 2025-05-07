@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './index.module.css'
+import Button from '../../../../../../components/button'
 
 interface WalletInfoProps {
 	name: string
 	address: string
 	privateKey: string
+	onModalClose: ()=> void
 }
 
-const WalletInfo: React.FC<WalletInfoProps> = ({ name, address, privateKey }) => {
+const WalletInfo: React.FC<WalletInfoProps> = ({ name, address, privateKey, onModalClose }) => {
 	const handleCopy = (value: string) => {
 		navigator.clipboard.writeText(value)
 		alert('Copied to clipboard!')
@@ -40,6 +42,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ name, address, privateKey }) =>
 					/>
 				</div>
 			</div>
+			<Button label="Close" onClick={onModalClose} />
 		</div>
 	)
 }

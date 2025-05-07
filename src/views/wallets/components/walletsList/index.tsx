@@ -52,6 +52,7 @@ const WalletList: React.FC = () => {
 
 	function handleCloseModal() {
 		setIsModalOpen(false)
+		setPrivateKey('')
 		setModalView('password')
 	}
 
@@ -78,7 +79,7 @@ const WalletList: React.FC = () => {
 				{modalView === 'password' ? (
 					<KeyForm onSubmitPassword={handleSubmitPassword} />
 				) : (
-					<WalletInfo name={activeWallet?.name || ''} address={activeWallet?.address || ''} privateKey={privateKey} />
+					<WalletInfo onModalClose={handleCloseModal} name={activeWallet?.name || ''} address={activeWallet?.address || ''} privateKey={privateKey} />
 				)}
 			</Modal>
 		</div>

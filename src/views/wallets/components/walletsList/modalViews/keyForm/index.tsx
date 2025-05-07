@@ -23,14 +23,15 @@ const KeyForm: React.FC<KeyFormProps> = ({ onSubmitPassword }) => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<Input
-				label="Wallet Name"
-				placeholder="Enter wallet name"
+				label="Password"
+				placeholder="Enter the wallet password"
+				type='password'
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
 				required
 				errorMessage={error}
 			/>
-			<Button label="Create Wallet" type="submit" />
+			<Button label="View Private Key" type="submit" />
 		</form>
 	)
 }
