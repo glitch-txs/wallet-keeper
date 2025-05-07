@@ -15,7 +15,7 @@ type BalanceCardProps = {
 const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) => {
 	const { data: tokenWithBalance, isLoading } = useQuery({
 		queryKey: ['balance', token?.address, chain.id, userAddress],
-		queryFn: async() => await getTokenWithBalance({ chain, userAddress, token }),
+		queryFn: async () => await getTokenWithBalance({ chain, userAddress, token }),
 		enabled: Boolean(userAddress),
 	})
 
@@ -29,11 +29,13 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) 
 			</div>
 			<div className={styles.rightSection}>
 				<p className={styles.value}>
-					{isLoading ? '-' : `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${tokenWithBalance?.formattedBalance}`}
+					{isLoading
+						? '-'
+						: `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${tokenWithBalance?.formattedBalance}`}
 				</p>
 
 				{token && (
-					<button className={styles.iconButton} onClick={()=> removeToken(token.address)}>
+					<button className={styles.iconButton} onClick={() => removeToken(token.address)}>
 						<img src="delete.svg" alt="delete" />
 					</button>
 				)}

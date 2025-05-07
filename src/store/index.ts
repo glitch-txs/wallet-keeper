@@ -39,7 +39,7 @@ export const useWalletStore = create<WalletStore>()(
 				}
 			},
 
-			addToken: async({ address, chain }: { address: Address, chain: Chain }) => {
+			addToken: async ({ address, chain }: { address: Address; chain: Chain }) => {
 				const newToken = await getTokenProperties({ address, chain })
 				set((state) => ({
 					tokens: [...state.tokens, newToken],

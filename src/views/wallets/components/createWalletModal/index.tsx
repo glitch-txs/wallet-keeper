@@ -14,8 +14,8 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 	const [walletName, setWalletName] = useState('')
 	const [password, setPassword] = useState('')
 	const [errors, setErrors] = useState({ walletName: '', password: '' })
-	
-	const addWallet = useWalletStore((state)=> state.addWallet)
+
+	const addWallet = useWalletStore((state) => state.addWallet)
 
 	function handleCreateWallet() {
 		const newErrors = {
