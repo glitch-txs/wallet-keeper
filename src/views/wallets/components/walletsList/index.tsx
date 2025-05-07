@@ -10,10 +10,10 @@ import { decryptPrivateKey } from '../../../../utils/crypto'
 
 const KEY_MODAL_VIEWS = {
 	REQUEST_PASSWORD: 'requestPassword',
-	WALLET_INFO: 'walletInformation'
+	WALLET_INFO: 'walletInformation',
 }
 
-type ModalViews = typeof KEY_MODAL_VIEWS[keyof typeof KEY_MODAL_VIEWS]
+type ModalViews = (typeof KEY_MODAL_VIEWS)[keyof typeof KEY_MODAL_VIEWS]
 
 const WalletList: React.FC = () => {
 	const [modalView, setModalView] = useState<ModalViews>(KEY_MODAL_VIEWS.REQUEST_PASSWORD)

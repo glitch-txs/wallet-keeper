@@ -14,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
-					{ROUTES.map(({ path, Element })=><Route path={path} element={<Element/>} />)}
+					{ROUTES.map(({ path, Element }) => (
+						<Route path={path} element={<Element />} />
+					))}
 				</Routes>
 			</BrowserRouter>
 		</QueryClientProvider>

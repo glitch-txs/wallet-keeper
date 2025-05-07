@@ -36,20 +36,20 @@ const WalletCard: React.FC<WalletCardProps> = ({
 			<div className={styles.rightSection}>
 				{isSelected && <span className={styles.selectedLabel}>Selected</span>}
 				<div className={styles.icons}>
-					<Tooltip content='View Balance' >
-					<button className={styles.iconButton} onClick={onViewBalance}>
-						<img src="coins.svg" alt="coins" />
-					</button>
+					<Tooltip content="View Balance">
+						<button className={styles.iconButton} onClick={onViewBalance}>
+							<img src="coins.svg" alt="coins" />
+						</button>
 					</Tooltip>
-					<Tooltip content='View Private Key' >
-					<button className={styles.iconButton} onClick={onViewKey}>
-						<img src="key.svg" alt="key" />
-					</button>
+					<Tooltip content="View Private Key">
+						<button className={styles.iconButton} onClick={onViewKey}>
+							<img src="key.svg" alt="key" />
+						</button>
 					</Tooltip>
-					<Tooltip content='Delete Wallet' >
-					<button className={styles.iconButton} onClick={onDelete}>
-						<img src="delete.svg" alt="delete" />
-					</button>
+					<Tooltip content="Delete Wallet">
+						<button className={styles.iconButton} onClick={onDelete}>
+							<img src="delete.svg" alt="delete" />
+						</button>
 					</Tooltip>
 				</div>
 			</div>
