@@ -1,19 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
-import styles from './index.module.css';
-import AccountProfile from './components';
+import { Link, useLocation } from 'react-router-dom'
+import styles from './index.module.css'
+import AccountProfile from './components'
 
 const navLinks: { path: string; label: string }[] = [
-  // { path: '/balance', label: 'Balance' },
-  { path: '/', label: 'Wallets' },
-];
+	// { path: '/balance', label: 'Balance' },
+	{ path: '/', label: 'Wallets' },
+]
 
 const Navbar = () => {
-  const location = useLocation();
+	const location = useLocation()
 
-  return (
-    <nav className={styles.navbar}>
-      <AccountProfile />
-      {/* <ul className={styles.navItems}>
+	return (
+		<nav className={styles.navbar}>
+			<AccountProfile />
+			{/* <ul className={styles.navItems}>
         {navLinks.map(({ path, label }) => (
           <li key={path}>
             <Link
@@ -25,9 +25,9 @@ const Navbar = () => {
           </li>
         ))}
       </ul> */}
-      <h1 className={styles.title}>WALLET KEEPER</h1>
-    </nav>
-  );
-};
+			<h1 className={styles.title}>WALLET KEEPER</h1>
+		</nav>
+	)
+}
 
-export default Navbar;
+export default Navbar

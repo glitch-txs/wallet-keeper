@@ -1,29 +1,29 @@
 .walletInfo {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
-  background-color: #ccc;
-  border-radius: 20%;
-  margin-right: 10px;
-  overflow: hidden;
+	width: 40px;
+	height: 40px;
+	background-color: #ccc;
+	border-radius: 20%;
+	margin-right: 10px;
+	overflow: hidden;
 }
 
 .walletDetails {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .walletName {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
+	font-size: 14px;
+	font-weight: 600;
+	color: #333;
 }
 
 .walletAddress {
-  font-size: 14px;
-  color: #6d6d6d;
+	font-size: 14px;
+	color: #6d6d6d;
 }

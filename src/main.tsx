@@ -7,13 +7,13 @@ import Balance from './views/balance'
 import Navbar from './layout/navbar'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/balance" element={<Balance />} />
-        <Route path="/" element={<Wallets />} />
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>,
+	<StrictMode>
+		<BrowserRouter>
+			<Navbar />
+			<Routes>
+				<Route path="/balance" element={<Balance />} />
+				<Route path="/" element={<Wallets />} />
+			</Routes>
+		</BrowserRouter>
+	</StrictMode>,
 )

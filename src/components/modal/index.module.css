@@ -1,48 +1,48 @@
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
 }
 
 .modal {
-  position: relative;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  min-width: 400px;
-  padding: 26px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	position: relative;
+	background: white;
+	border-radius: 12px;
+	overflow: hidden;
+	min-width: 400px;
+	padding: 26px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
 }
 
 .closeButton {
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+	position: absolute;
+	top: 32px;
+	right: 32px;
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	transition: 0.3s;
 }
 
 .closeButton:hover {
-  color: red;
+	color: red;
 }
 
 .content {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }

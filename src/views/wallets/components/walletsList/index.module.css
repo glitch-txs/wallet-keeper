@@ -1,17 +1,17 @@
-.container{
-  width: 100%;
-  min-height: 600px;
-  text-align: center;
+.container {
+	width: 100%;
+	min-height: 600px;
+	text-align: center;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
 }
 
-.emptyState{
-  margin-top: 40%;
-  font-size: 20px;
-  font-weight: 900;
-  opacity: 0.4;
+.emptyState {
+	margin-top: 40%;
+	font-size: 20px;
+	font-weight: 900;
+	opacity: 0.4;
 }

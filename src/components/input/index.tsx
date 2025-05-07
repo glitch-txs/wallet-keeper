@@ -1,40 +1,32 @@
-import React from 'react';
-import styles from './index.module.css';
+import React from 'react'
+import styles from './index.module.css'
 
 type InputProps = {
-  label: string;
-  type?: 'text' | 'password' | 'email' | 'number';
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
-  errorMessage?: string;
-};
+	label: string
+	type?: 'text' | 'password' | 'email' | 'number'
+	placeholder?: string
+	value?: string
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+	required?: boolean
+	errorMessage?: string
+}
 
-const Input: React.FC<InputProps> = ({ 
-  label, 
-  type = 'text', 
-  placeholder, 
-  value, 
-  onChange, 
-  required = false, 
-  errorMessage 
+const Input: React.FC<InputProps> = ({
+	label,
+	type = 'text',
+	placeholder,
+	value,
+	onChange,
+	required = false,
+	errorMessage,
 }) => {
-  return (
-    <div className={styles.inputContainer}>
-      <label className={styles.label}>{label}</label>
-      <input
-        className={styles.input}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      {required && errorMessage && (
-        <span className={styles.error}>{errorMessage}</span>
-      )}
-    </div>
-  );
-};
+	return (
+		<div className={styles.inputContainer}>
+			<label className={styles.label}>{label}</label>
+			<input className={styles.input} type={type} placeholder={placeholder} value={value} onChange={onChange} />
+			{required && errorMessage && <span className={styles.error}>{errorMessage}</span>}
+		</div>
+	)
+}
 
-export default Input;
+export default Input
