@@ -8,18 +8,6 @@
 	justify-content: center;
 }
 
-.form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-}
-
-.form button {
-	margin-top: 20px;
-}
-
 .title {
 	color: #4a4a4a;
 	font-size: 34px;
