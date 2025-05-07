@@ -5,12 +5,12 @@ import styles from './index.module.css'
 import Input from '../../../../components/input'
 import Button from '../../../../components/button'
 
-type WalletModalProps = {
+type CreateWalletModalProps = {
 	setIsModalOpen: (isModalOpen: boolean) => void
 	isModalOpen: boolean
 }
 
-const WalletModal: React.FC<WalletModalProps> = ({ isModalOpen, setIsModalOpen }) => {
+const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setIsModalOpen }) => {
 	const [walletName, setWalletName] = useState('')
 	const [password, setPassword] = useState('')
 	const [errors, setErrors] = useState({ walletName: '', password: '' })
@@ -24,6 +24,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isModalOpen, setIsModalOpen }
 		setErrors(newErrors)
 
 		if (newErrors.walletName || newErrors.password) return
+		/**TODO: Validate account creation */
 		generateWallet({ name: walletName, password })
 		setIsModalOpen(false)
 		setWalletName('')
@@ -62,4 +63,4 @@ const WalletModal: React.FC<WalletModalProps> = ({ isModalOpen, setIsModalOpen }
 	)
 }
 
-export default WalletModal
+export default CreateWalletModal

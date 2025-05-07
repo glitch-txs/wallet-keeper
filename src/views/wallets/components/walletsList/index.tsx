@@ -4,12 +4,19 @@ import styles from './index.module.css'
 import { useWalletStore } from '../../../../store'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../../../../components/modal'
-import KeyForm from './modalViews/keyForm'
+import PasswordForm from './modalViews/passwordForm'
 import WalletInfo from './modalViews/walletInfo'
 import { decryptPrivateKey } from '../../../../utils/crypto'
 
+const KEY_MODAL_VIEWS = {
+	REQUEST_PASSWORD: 'requestPassword',
+	WALLET_INFO: 'walletInformation'
+}
+
+type ModalViews = typeof KEY_MODAL_VIEWS[keyof typeof KEY_MODAL_VIEWS]
+
 const WalletList: React.FC = () => {
-	const [modalView, setModalView] = useState<'password' | 'walletInformation'>('password')
+	const [modalView, setModalView] = useState<ModalViews>(KEY_MODAL_VIEWS.REQUEST_PASSWORD)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [privateKey, setPrivateKey] = useState('')
 
@@ -33,7 +40,7 @@ const WalletList: React.FC = () => {
 	function handleViewKey(address: string) {
 		setActiveWallet(address)
 		setIsModalOpen(true)
-		setModalView('password')
+		setModalView(KEY_MODAL_VIEWS.REQUEST_PASSWORD)
 	}
 
 	/** The user's password is requested before revealing the private key */
@@ -47,13 +54,13 @@ const WalletList: React.FC = () => {
 		if (!_privateKey) throw Error('Error while decrypting private key.')
 
 		setPrivateKey(_privateKey)
-		setModalView('walletInformation')
+		setModalView(KEY_MODAL_VIEWS.WALLET_INFO)
 	}
 
 	function handleCloseModal() {
 		setIsModalOpen(false)
 		setPrivateKey('')
-		setModalView('password')
+		setModalView(KEY_MODAL_VIEWS.REQUEST_PASSWORD)
 	}
 
 	return (
@@ -76,8 +83,8 @@ const WalletList: React.FC = () => {
 			)}
 
 			<Modal title="Wallet Details" isOpen={isModalOpen} onClose={handleCloseModal}>
-				{modalView === 'password' ? (
-					<KeyForm onSubmitPassword={handleSubmitPassword} />
+				{modalView === KEY_MODAL_VIEWS.REQUEST_PASSWORD ? (
+					<PasswordForm onSubmitPassword={handleSubmitPassword} />
 				) : (
 					<WalletInfo
 						onModalClose={handleCloseModal}

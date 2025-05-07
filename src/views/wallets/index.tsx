@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './index.module.css'
 import Button from '../../components/button'
 import WalletList from './components/walletsList'
-import WalletModal from './components/modal'
+import CreateWalletModal from './components/createWalletModal'
 
 const Wallets: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -12,7 +12,7 @@ const Wallets: React.FC = () => {
 			<h1 className={styles.title}>Your Wallets</h1>
 			<div className={styles.walletsContainer}>
 				<Button label="Create Wallet" onClick={() => setIsModalOpen(true)} />
-				<WalletModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+				<CreateWalletModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 				<WalletList />
 			</div>
 		</div>

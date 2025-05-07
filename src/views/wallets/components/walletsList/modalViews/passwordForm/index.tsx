@@ -3,11 +3,11 @@ import Input from '../../../../../../components/input'
 import Button from '../../../../../../components/button'
 import styles from './index.module.css'
 
-interface KeyFormProps {
+interface PasswordFormProps {
 	onSubmitPassword: (password: string) => void
 }
 
-const KeyForm: React.FC<KeyFormProps> = ({ onSubmitPassword }) => {
+const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword }) => {
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
 
@@ -36,4 +36,4 @@ const KeyForm: React.FC<KeyFormProps> = ({ onSubmitPassword }) => {
 	)
 }
 
-export default KeyForm
+export default PasswordForm
