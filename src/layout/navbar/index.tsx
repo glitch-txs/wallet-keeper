@@ -1,11 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
 import styles from './index.module.css'
 import AccountProfile from './components'
-import { ROUTES } from '../../views/routes'
 
 const Navbar = () => {
-	const location = useLocation()
-
 	return (
 		<nav className={styles.navbar}>
 			<h1 className={styles.title}>WALLET KEEPER</h1>
