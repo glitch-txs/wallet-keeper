@@ -18,7 +18,7 @@ export const useWalletStore = create<WalletStore>()(
         set((state) => ({
           wallets: state.wallets.filter((w) => w.address !== address),
           activeWallet:
-            state.activeWallet?.address === address ? undefined : state.activeWallet,
+            state.activeWallet?.address === address ? state.wallets.filter((w) => w.address !== address)[0] : state.activeWallet,
         }));
       },
 

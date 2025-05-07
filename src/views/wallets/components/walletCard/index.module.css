@@ -28,7 +28,6 @@
 .avatar {
   width: 40px;
   height: 40px;
-  background-color: #e0e0e0;
   border-radius: 20%;
   margin-right: 12px;
   overflow: hidden;
@@ -60,11 +59,23 @@
 
 .icons {
   display: flex;
-  gap: 8px;
+  gap: 14px;
   
 }
 
-.icons img{
+.iconButton img{
   width: 20px;
   height: auto;
+}
+
+.iconButton{
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 4px;
+}
+
+.iconButton:hover{
+  background-color: #e7e7e7;
+  border-radius: 4px;
 }

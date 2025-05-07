@@ -11,8 +11,8 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Balance />} />
-        <Route path="/wallets" element={<Wallets />} />
+        <Route path="/balance" element={<Balance />} />
+        <Route path="/" element={<Wallets />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

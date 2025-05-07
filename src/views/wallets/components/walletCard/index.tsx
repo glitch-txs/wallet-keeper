@@ -7,12 +7,18 @@ type WalletCardProps = {
   address: string;
   isSelected?: boolean;
   onClick?: () => void;
+  onViewBalance: ()=>void;
+  onDelete: ()=>void;
+  onViewKey: ()=>void;
 };
 
 const WalletCard: React.FC<WalletCardProps> = ({
   walletName,
   address,
   isSelected = false,
+  onViewBalance,
+  onDelete,
+  onViewKey,
   onClick
 }) => {
   return (
@@ -30,8 +36,9 @@ const WalletCard: React.FC<WalletCardProps> = ({
       <div className={styles.rightSection}>
         {isSelected && <span className={styles.selectedLabel}>Selected</span>}
         <div className={styles.icons}>
-          <img src="coins.svg" alt="coins" />
-          <img src="key.svg" alt="key" />
+          <button className={styles.iconButton} onClick={onViewBalance} ><img src="coins.svg" alt="coins" /></button>
+          <button className={styles.iconButton} onClick={onViewKey} ><img src="key.svg" alt="key" /></button>
+          <button className={styles.iconButton} onClick={onDelete} ><img src="delete.svg" alt="delete" /></button>
         </div>
       </div>
     </div>

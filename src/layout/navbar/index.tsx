@@ -3,8 +3,8 @@ import styles from './index.module.css';
 import AccountProfile from './components';
 
 const navLinks: { path: string; label: string }[] = [
-  { path: '/', label: 'Balance' },
-  { path: '/wallets', label: 'Wallets' },
+  // { path: '/balance', label: 'Balance' },
+  { path: '/', label: 'Wallets' },
 ];
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <AccountProfile />
-      <ul className={styles.navItems}>
+      {/* <ul className={styles.navItems}>
         {navLinks.map(({ path, label }) => (
           <li key={path}>
             <Link
@@ -24,7 +24,8 @@ const Navbar = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <h1 className={styles.title}>WALLET KEEPER</h1>
     </nav>
   );
 };

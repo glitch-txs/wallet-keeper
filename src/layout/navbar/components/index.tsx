@@ -22,9 +22,7 @@ const AccountProfile: React.FC = () => {
     );
   }
 
-  return (
-    <h2 className={styles.walletName}>Welcome to Wallet Keeper</h2>
-  );
+  return null
 };
 
 export default AccountProfile;
