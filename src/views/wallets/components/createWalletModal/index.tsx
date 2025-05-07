@@ -39,7 +39,7 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 	}
 
 	return (
-		<Modal title="Create a New Wallet" isOpen={isModalOpen} onClose={() => false}>
+		<Modal title="Create a New Wallet" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 			<form
 				className={styles.form}
 				onSubmit={(e) => {
