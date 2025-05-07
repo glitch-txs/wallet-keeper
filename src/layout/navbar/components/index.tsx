@@ -1,17 +1,29 @@
 import React from 'react';
 import styles from './index.module.css';
+import { useWalletStore } from '../../../store';
+import { blo } from 'blo';
 
 const AccountProfile: React.FC = () => {
-  return (
-    <div className={styles.walletInfo}>
-      <figure className={styles.avatar}>
-        <img src="/path-to-avatar-placeholder.png" alt="Wallet Avatar" />
-      </figure>
-      <div className={styles.walletDetails}>
-        <h2 className={styles.walletName}>Address Name</h2>
-        <p className={styles.walletAddress}>0x1234...abcd</p>
+  const activeWallet = useWalletStore((state)=> state.activeWallet);
+
+  if(activeWallet){
+    return (
+      <div className={styles.walletInfo}>
+        <figure className={styles.avatar}>
+          <img alt={activeWallet.address} src={blo(activeWallet.address as `0x${string}`)}/>
+        </figure>
+          <div className={styles.walletDetails}>
+            <h2 className={styles.walletName}>{activeWallet.name}</h2>
+            <p className={styles.walletAddress}>
+              {activeWallet.address.slice(0, 6)}...{activeWallet.address.slice(-4)}
+            </p>
+          </div>
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <h2 className={styles.walletName}>Welcome to Wallet Keeper</h2>
   );
 };
 

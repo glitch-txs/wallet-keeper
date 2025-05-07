@@ -1,14 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { UserWallet } from '../types';
-
-interface WalletStore {
-  wallets: UserWallet[];
-  activeWallet?: UserWallet;
-  addWallet: (wallet: UserWallet) => void;
-  removeWallet: (address: string) => void;
-  setActiveWallet: (address: string) => void;
-}
+import type { UserWallet, WalletStore } from '../types';
 
 export const useWalletStore = create<WalletStore>()(
   persist(

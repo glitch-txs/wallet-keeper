@@ -7,8 +7,9 @@
   width: 40px;
   height: 40px;
   background-color: #ccc;
-  border-radius: 50%;
+  border-radius: 20%;
   margin-right: 10px;
+  overflow: hidden;
 }
 
 .walletDetails {
@@ -18,11 +19,11 @@
 
 .walletName {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #333;
 }
 
 .walletAddress {
-  font-size: 12px;
-  color: #888;
+  font-size: 14px;
+  color: #6d6d6d;
 }

@@ -1,7 +1,7 @@
 import CryptoJS from 'crypto-js';
 import type { UserWallet } from '../types';
 
-export const encryptPrivateKey = (privateKey: string, password: string): Pick<UserWallet, 'encryptedPrivateKey' | 'salt'> => {
+export const encryptPrivateKey = ({privateKey, password}:{privateKey: string, password: string}): Pick<UserWallet, 'encryptedPrivateKey' | 'salt'> => {
   const salt = CryptoJS.lib.WordArray.random(16).toString();
   const key = CryptoJS.PBKDF2(password, salt, {
     keySize: 256 / 32,
@@ -16,11 +16,15 @@ export const encryptPrivateKey = (privateKey: string, password: string): Pick<Us
   };
 };
 
-export const decryptPrivateKey = (
-  encryptedPrivateKey: string,
-  password: string,
-  salt: string
-): string | null => {
+export const decryptPrivateKey = ({
+  encryptedPrivateKey,
+  password,
+  salt,
+}: {
+  encryptedPrivateKey: string;
+  password: string;
+  salt: string;
+}): string | null => {
   try {
     const key = CryptoJS.PBKDF2(password, salt, {
       keySize: 256 / 32,

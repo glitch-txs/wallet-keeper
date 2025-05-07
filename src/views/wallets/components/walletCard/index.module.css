@@ -1,0 +1,70 @@
+/* WalletCard.module.css */
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  transition: border-color 0.3s;
+  cursor: pointer;
+
+  width: 100%;
+}
+
+.selected {
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 60%;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 20%;
+  margin-right: 12px;
+  overflow: hidden;
+}
+
+.name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.account {
+  color: #666;
+  font-size: 14px;
+}
+
+.rightSection {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+}
+
+.selectedLabel {
+  color: #3b82f6;
+  font-weight: 800;
+  margin-right: auto;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  
+}
+
+.icons img{
+  width: 20px;
+  height: auto;
+}
