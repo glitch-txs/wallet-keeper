@@ -12,6 +12,7 @@ const Navbar = () => {
 
 	return (
 		<nav className={styles.navbar}>
+			<h1 className={styles.title}>WALLET KEEPER</h1>
 			<AccountProfile />
 			{/* <ul className={styles.navItems}>
         {navLinks.map(({ path, label }) => (
@@ -25,7 +26,6 @@ const Navbar = () => {
           </li>
         ))}
       </ul> */}
-			<h1 className={styles.title}>WALLET KEEPER</h1>
 		</nav>
 	)
 }

@@ -1,12 +1,15 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { UserWallet, WalletStore } from '../types'
+import { mainnet } from 'viem/chains'
 
 export const useWalletStore = create<WalletStore>()(
 	persist(
 		(set, get) => ({
 			wallets: [],
 			activeWallet: undefined,
+			activeChain: mainnet,
+			tokens: [],
 
 			addWallet: (wallet: UserWallet) => {
 				set((state) => ({
