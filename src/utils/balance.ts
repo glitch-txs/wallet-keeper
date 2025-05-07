@@ -18,10 +18,12 @@ export async function getTokenWithBalance({
 			address: userAddress,
 		})
 
+		const formattedBalance = balance ? Number(formatEther(balance)).toFixed(4) : '0.0000';
+
 		return {
 			name: chain.nativeCurrency.name,
 			symbol: chain.nativeCurrency.symbol,
-			formattedBalance: balance ? formatEther(balance) : '0',
+			formattedBalance,
 		}
 	}
 
@@ -32,7 +34,7 @@ export async function getTokenWithBalance({
 		args: [userAddress],
 	})
 
-	const formattedBalance = formatUnits(bigIntBalance, token.decimals)
+	const formattedBalance = Number(formatUnits(bigIntBalance, token.decimals)).toFixed(4);
 
 	return {
 		name: token.name,

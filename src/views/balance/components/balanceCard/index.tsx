@@ -26,15 +26,17 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) 
 	})
 
 	useEffect(() => {
-		toast.error('Error while fetching balance. ')
-		console.error(error?.message)
+		if(isError){
+			toast.error('Error while fetching balance. ')
+			console.error(error?.message)
+		}
 	}, [isError])
 
 	const removeToken = useWalletStore((state) => state.removeToken)
 
 	const balance = useMemo(() => {
 		return tokenWithBalance
-			? `${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol} ${tokenWithBalance?.formattedBalance || 0}`
+			? `${tokenWithBalance?.formattedBalance || 0} ${token ? tokenWithBalance?.symbol : chain.nativeCurrency.symbol}`
 			: undefined
 	}, [token, tokenWithBalance, chain])
 

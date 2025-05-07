@@ -14,6 +14,7 @@ export const generateWallet = ({ name, password }: { name: string; password: str
 
 		return _newAccount
 	} catch (error) {
-		throw new Error('Failed to generate wallet: ' + (error as Error).message)
+		console.error('Failed to generate wallet: ' + (error as Error).message)
+		return null
 	}
 }

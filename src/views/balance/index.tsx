@@ -9,6 +9,8 @@ import Input from '../../components/input'
 import NetworkSelector from './components/networkSelector'
 
 import * as viemChains from 'viem/chains'
+import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 const Balance: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -17,6 +19,8 @@ const Balance: React.FC = () => {
 	const [newTokenAddress, setNewTokenAddress] = useState('')
 	const [error, setError] = useState('')
 
+	const navigation = useNavigate()
+
 	const tokens = useWalletStore((state) => state.tokens)
 	const addToken = useWalletStore((state) => state.addToken)
 
@@ -24,7 +28,12 @@ const Balance: React.FC = () => {
 		setError(newTokenAddress ? '' : 'Token Address is required')
 		if (!newTokenAddress) return
 
-		await addToken({ address: newTokenAddress as Address, chain: activeChain })
+		const token = await addToken({ address: newTokenAddress as Address, chain: activeChain })
+		if(token){
+			toast.success('Token Added Successfully!')
+		}else{
+			toast.error('An error occurred!')
+		}
 		setIsModalOpen(false)
 	}
 
@@ -33,10 +42,20 @@ const Balance: React.FC = () => {
 		return testnetNetworks
 	}, [])
 
+	function handleGoBack(){
+		navigation('/')
+	}
+
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}>Your Balance</h1>
 			<div className={styles.balanceContainer}>
+				<div className={styles.goBackContainer}>
+					<button onClick={handleGoBack} className={styles.goBackButton}>
+						<img src='arrow.svg' alt='arrow' />
+						Go Back
+					</button>
+				</div>
 				<div className={styles.ctaContainer}>
 					<NetworkSelector options={networks} />
 					<Button label="Add Token" onClick={() => setIsModalOpen(true)} />
