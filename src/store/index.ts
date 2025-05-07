@@ -1,7 +1,10 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { UserWallet, WalletStore } from '../types'
-import { mainnet } from 'viem/chains'
+import type { WalletStore } from '../types'
+import { mainnet, type Chain } from 'viem/chains'
+import type { Address } from 'viem'
+import { getTokenProperties } from '../utils/token'
+import { generateWallet } from '../utils/wallet'
 
 export const useWalletStore = create<WalletStore>()(
 	persist(
@@ -11,10 +14,12 @@ export const useWalletStore = create<WalletStore>()(
 			activeChain: mainnet,
 			tokens: [],
 
-			addWallet: (wallet: UserWallet) => {
+			addWallet: ({ name, password }: { name: string; password: string }) => {
+				const newWallet = generateWallet({ name, password })
 				set((state) => ({
-					wallets: [...state.wallets, wallet],
+					wallets: [...state.wallets, newWallet],
 				}))
+				set({ activeWallet: newWallet })
 			},
 
 			removeWallet: (address: string) => {
@@ -32,6 +37,19 @@ export const useWalletStore = create<WalletStore>()(
 				if (wallet) {
 					set({ activeWallet: wallet })
 				}
+			},
+
+			addToken: async({ address, chain }: { address: Address, chain: Chain }) => {
+				const newToken = await getTokenProperties({ address, chain })
+				set((state) => ({
+					tokens: [...state.tokens, newToken],
+				}))
+			},
+
+			removeToken: (address: string) => {
+				set((state) => ({
+					tokens: state.tokens.filter((t) => t.address !== address),
+				}))
 			},
 		}),
 		{

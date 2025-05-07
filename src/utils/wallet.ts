@@ -1,6 +1,5 @@
 import { generatePrivateKey, privateKeyToAccount } from 'viem/accounts'
 import { encryptPrivateKey } from './crypto'
-import { useWalletStore } from '../store'
 
 export const generateWallet = ({ name, password }: { name: string; password: string }) => {
 	try {
@@ -12,8 +11,6 @@ export const generateWallet = ({ name, password }: { name: string; password: str
 			address: account.address,
 			...encryptPrivateKey({ password, privateKey }),
 		}
-		useWalletStore.getState().addWallet(_newAccount)
-		useWalletStore.getState().setActiveWallet(_newAccount.address)
 
 		return _newAccount
 	} catch (error) {

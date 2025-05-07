@@ -21,7 +21,7 @@ export async function getTokenWithBalance({
 		return {
 			name: chain.nativeCurrency.name,
 			symbol: chain.nativeCurrency.symbol,
-			formattedBalance: balance ? formatEther(balance) : undefined,
+			formattedBalance: balance ? formatEther(balance) : '0',
 		}
 	}
 
