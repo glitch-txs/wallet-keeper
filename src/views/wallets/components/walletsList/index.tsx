@@ -79,7 +79,12 @@ const WalletList: React.FC = () => {
 				{modalView === 'password' ? (
 					<KeyForm onSubmitPassword={handleSubmitPassword} />
 				) : (
-					<WalletInfo onModalClose={handleCloseModal} name={activeWallet?.name || ''} address={activeWallet?.address || ''} privateKey={privateKey} />
+					<WalletInfo
+						onModalClose={handleCloseModal}
+						name={activeWallet?.name || ''}
+						address={activeWallet?.address || ''}
+						privateKey={privateKey}
+					/>
 				)}
 			</Modal>
 		</div>

@@ -7,7 +7,6 @@ import WalletModal from './components/modal'
 const Wallets: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
-
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}>Your Wallets</h1>

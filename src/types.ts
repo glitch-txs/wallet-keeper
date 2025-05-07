@@ -1,4 +1,4 @@
-import type { Address, Chain } from "viem"
+import type { Address, Chain } from 'viem'
 
 export interface UserWallet {
 	name: string
@@ -18,7 +18,7 @@ export interface Token {
 export interface WalletStore {
 	wallets: UserWallet[]
 	activeWallet?: UserWallet
-	activeChain: Chain,
+	activeChain: Chain
 	tokens: []
 	addWallet: (wallet: UserWallet) => void
 	removeWallet: (address: string) => void

@@ -6,7 +6,7 @@ interface WalletInfoProps {
 	name: string
 	address: string
 	privateKey: string
-	onModalClose: ()=> void
+	onModalClose: () => void
 }
 
 const WalletInfo: React.FC<WalletInfoProps> = ({ name, address, privateKey, onModalClose }) => {

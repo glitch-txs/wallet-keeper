@@ -15,7 +15,7 @@
 	margin: 40px 0;
 }
 
-.balanceContainer{
+.balanceContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: end;

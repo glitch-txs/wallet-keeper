@@ -13,7 +13,7 @@ const Balance: React.FC = () => {
 				<Button label="Add Token" onClick={() => setIsModalOpen(true)} />
 			</div>
 			<Modal title="Add a New Token" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-					a
+				a
 			</Modal>
 		</div>
 	)

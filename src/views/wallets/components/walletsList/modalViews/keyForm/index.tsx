@@ -25,7 +25,7 @@ const KeyForm: React.FC<KeyFormProps> = ({ onSubmitPassword }) => {
 			<Input
 				label="Password"
 				placeholder="Enter the wallet password"
-				type='password'
+				type="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
 				required
