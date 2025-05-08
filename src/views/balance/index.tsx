@@ -30,9 +30,9 @@ const Balance: React.FC = () => {
 		if (!newTokenAddress) return
 
 		const token = await addToken({ address: newTokenAddress as Address, chain: activeChain })
-		if(token){
+		if (token) {
 			toast.success('Token Added Successfully!')
-		}else{
+		} else {
 			toast.error('An error occurred!')
 		}
 		setIsModalOpen(false)
@@ -43,7 +43,7 @@ const Balance: React.FC = () => {
 		return testnetNetworks
 	}, [])
 
-	function handleGoBack(){
+	function handleGoBack() {
 		navigation('/')
 	}
 
@@ -55,7 +55,7 @@ const Balance: React.FC = () => {
 			<div className={styles.balanceContainer}>
 				<div className={styles.goBackContainer}>
 					<button onClick={handleGoBack} className={styles.goBackButton}>
-						<img src='arrow.svg' alt='arrow' />
+						<img src="arrow.svg" alt="arrow" />
 						Go Back
 					</button>
 				</div>

@@ -1,42 +1,42 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import PasswordForm from '..';
+import { render, screen, fireEvent } from '@testing-library/react'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import PasswordForm from '..'
 
 describe('PasswordForm Component', () => {
-  const mockOnSubmitPassword = vi.fn();
+	const mockOnSubmitPassword = vi.fn()
 
-  beforeEach(() => {
-    render(<PasswordForm onSubmitPassword={mockOnSubmitPassword} />);
-  });
+	beforeEach(() => {
+		render(<PasswordForm onSubmitPassword={mockOnSubmitPassword} />)
+	})
 
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
+	afterEach(() => {
+		vi.clearAllMocks()
+	})
 
-  it('should show an error message when submitting an empty password', () => {
-    const button = screen.getByRole('button', { name: /view private key/i });
+	it('should show an error message when submitting an empty password', () => {
+		const button = screen.getByRole('button', { name: /view private key/i })
 
-    fireEvent.click(button);
+		fireEvent.click(button)
 
-    expect(screen.getByText('Password is required.')).toBeInTheDocument();
-    expect(mockOnSubmitPassword).not.toHaveBeenCalled();
-  });
+		expect(screen.getByText('Password is required.')).toBeInTheDocument()
+		expect(mockOnSubmitPassword).not.toHaveBeenCalled()
+	})
 
-  it('should call onSubmitPassword with the password when form is submitted', () => {
-    const passwordInput = screen.getByPlaceholderText('Enter the wallet password');
-    const button = screen.getByRole('button', { name: /view private key/i });
+	it('should call onSubmitPassword with the password when form is submitted', () => {
+		const passwordInput = screen.getByPlaceholderText('Enter the wallet password')
+		const button = screen.getByRole('button', { name: /view private key/i })
 
-    fireEvent.change(passwordInput, { target: { value: 'mySecretPassword' } });
-    fireEvent.click(button);
+		fireEvent.change(passwordInput, { target: { value: 'mySecretPassword' } })
+		fireEvent.click(button)
 
-    expect(mockOnSubmitPassword).toHaveBeenCalledWith('mySecretPassword');
-  });
+		expect(mockOnSubmitPassword).toHaveBeenCalledWith('mySecretPassword')
+	})
 
-  it('should not call onSubmitPassword if password is empty', () => {
-    const button = screen.getByRole('button', { name: /view private key/i });
+	it('should not call onSubmitPassword if password is empty', () => {
+		const button = screen.getByRole('button', { name: /view private key/i })
 
-    fireEvent.click(button);
+		fireEvent.click(button)
 
-    expect(mockOnSubmitPassword).not.toHaveBeenCalled();
-  });
-});
+		expect(mockOnSubmitPassword).not.toHaveBeenCalled()
+	})
+})

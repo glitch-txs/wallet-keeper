@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import { useFocusInput } from '../../../../../../hooks/useFocusInput'
 
 interface PasswordFormProps {
-	onSubmitPassword: (password: string) => (string | null)
+	onSubmitPassword: (password: string) => string | null
 	isModalOpen: boolean
 }
 
@@ -17,11 +17,11 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword, isModalOp
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
 
-		setError(password ? "" : 'Password is required.')
+		setError(password ? '' : 'Password is required.')
 
 		if (!password) return
 		const privateKey = onSubmitPassword(password)
-		if(!privateKey){
+		if (!privateKey) {
 			toast.error('Incorrect password!')
 		}
 	}

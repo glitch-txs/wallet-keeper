@@ -16,7 +16,7 @@ export const useWalletStore = create<WalletStore>()(
 
 			addWallet: ({ name, password }: { name: string; password: string }) => {
 				const newWallet = generateWallet({ name, password })
-				if(!newWallet) return null
+				if (!newWallet) return null
 
 				set((state) => ({
 					wallets: [...state.wallets, newWallet],
@@ -45,8 +45,8 @@ export const useWalletStore = create<WalletStore>()(
 
 			addToken: async ({ address, chain }: { address: Address; chain: Chain }) => {
 				const newToken = await getTokenProperties({ address, chain })
-				if(!newToken) return null
-				
+				if (!newToken) return null
+
 				set((state) => ({
 					tokens: [...state.tokens, newToken],
 				}))

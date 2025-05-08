@@ -20,12 +20,22 @@ const Input: React.FC<InputProps> = ({
 	onChange,
 	required = false,
 	errorMessage,
-	ref
+	ref,
 }) => {
 	return (
 		<div className={styles.inputContainer}>
-			<label className={styles.label} htmlFor={label}>{label}</label>
-			<input ref={ref} id={label} className={styles.input} type={type} placeholder={placeholder} value={value} onChange={onChange} />
+			<label className={styles.label} htmlFor={label}>
+				{label}
+			</label>
+			<input
+				ref={ref}
+				id={label}
+				className={styles.input}
+				type={type}
+				placeholder={placeholder}
+				value={value}
+				onChange={onChange}
+			/>
 			{required && errorMessage && <span className={styles.error}>{errorMessage}</span>}
 		</div>
 	)

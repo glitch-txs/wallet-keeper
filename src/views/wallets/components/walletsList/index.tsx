@@ -53,14 +53,14 @@ const WalletList: React.FC = () => {
 		const { encryptedPrivateKey, salt } = wallet
 		const _privateKey = decryptPrivateKey({ password, encryptedPrivateKey, salt })
 
-		if (!_privateKey){
+		if (!_privateKey) {
 			console.error('Error while decrypting private key.')
 			return null
 		}
 
 		setPrivateKey(_privateKey)
 		setModalView(KEY_MODAL_VIEWS.WALLET_INFO)
-		
+
 		return _privateKey
 	}
 

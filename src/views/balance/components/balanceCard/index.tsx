@@ -26,7 +26,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ userAddress, token, chain }) 
 	})
 
 	useEffect(() => {
-		if(isError){
+		if (isError) {
 			toast.error('Error while fetching balance.')
 			console.error(error?.message)
 		}
