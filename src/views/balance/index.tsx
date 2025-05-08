@@ -65,9 +65,11 @@ const Balance: React.FC = () => {
 					<Button label="Add Token" onClick={() => setIsModalOpen(true)} />
 				</div>
 				<BalanceCard userAddress={activeWallet?.address as Address} chain={activeChain} />
-				{tokens.filter(t => t.chainId === activeChain.id).map((token) => (
-					<BalanceCard userAddress={activeWallet?.address as Address} chain={activeChain} token={token} />
-				))}
+				{tokens
+					.filter((t) => t.chainId === activeChain.id)
+					.map((token) => (
+						<BalanceCard userAddress={activeWallet?.address as Address} chain={activeChain} token={token} />
+					))}
 			</div>
 			<Modal title="Add a New Token" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 				<form
