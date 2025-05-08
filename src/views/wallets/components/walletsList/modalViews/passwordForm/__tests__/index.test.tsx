@@ -6,7 +6,7 @@ describe('PasswordForm Component', () => {
 	const mockOnSubmitPassword = vi.fn()
 
 	beforeEach(() => {
-		render(<PasswordForm onSubmitPassword={mockOnSubmitPassword} />)
+		render(<PasswordForm onSubmitPassword={mockOnSubmitPassword} isModalOpen={true} />)
 	})
 
 	afterEach(() => {
