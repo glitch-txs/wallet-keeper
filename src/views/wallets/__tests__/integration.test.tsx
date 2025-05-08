@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import Wallets from '..';
 import { BrowserRouter } from 'react-router-dom';
-import '@testing-library/jest-dom';
 import toast from 'react-hot-toast';
 import { useWalletStore } from '../../../store';
 
