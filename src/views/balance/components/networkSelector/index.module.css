@@ -81,3 +81,23 @@
 	color: #333;
 	font-size: 14px;
 }
+
+@media (max-width: 768px) {
+	.selectorWrapper {
+		max-width: 180px;
+	}
+
+	.ActiveSelector{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 80%;
+		display: block;
+	}
+}
+
+@media (max-width: 468px) {
+	.selectorWrapper {
+		max-width: 160px;
+	}
+}

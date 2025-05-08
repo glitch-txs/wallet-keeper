@@ -24,3 +24,15 @@
 	width: 100%;
 	max-width: 700px;
 }
+
+@media (max-width: 768px) {
+	.walletsContainer {
+		max-width: 400px;
+	}
+}
+
+@media (max-width: 468px) {
+	.walletsContainer {
+		max-width: 300px;
+	}
+}

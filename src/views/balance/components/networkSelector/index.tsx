@@ -58,7 +58,7 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ options }) => {
 						onClick={(e) => e.stopPropagation()}
 					/>
 				) : (
-					<span>{activeChain.name}</span>
+					<span className={styles.ActiveSelector}>{activeChain.name}</span>
 				)}
 				<div className={`${styles.icon} ${isOpen ? styles.open : ''}`} />
 			</div>

@@ -46,3 +46,28 @@
 .closeButton:hover {
 	color: red;
 }
+
+
+@media (max-width: 768px) {
+	.modal {
+		min-width: 300px;
+		padding: 26px;
+	}
+
+	.title{
+		font-size: 18px;
+	}
+
+	.closeButton {
+		top: 26px;
+		right: 26px;
+	}
+}
+
+@media (max-width: 310px) {
+	.modal {
+		min-width: 280px;
+		padding: 18px;
+	}
+}
+

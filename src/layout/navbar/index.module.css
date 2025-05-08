@@ -38,3 +38,15 @@
 .active {
 	color: #007bff;
 }
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 568px) {
+	.title {
+		display: none;
+	}
+}

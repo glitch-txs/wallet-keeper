@@ -46,3 +46,15 @@
 .container button {
 	margin-top: 20px;
 }
+
+@media (max-width: 720px) {
+	.value {
+		font-size: 12px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 80%;
+		display: block;
+	}
+}
+
