@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import Input from '../../../../../../components/input'
 import Button from '../../../../../../components/button'
 import styles from './index.module.css'
+import toast from 'react-hot-toast'
+import { useFocusInput } from '../../../../../../hooks/useFocusInput'
 
 interface PasswordFormProps {
-	onSubmitPassword: (password: string) => void
+	onSubmitPassword: (password: string) => (string | null)
+	isModalOpen: boolean
 }
 
-const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword }) => {
+const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword, isModalOpen }) => {
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
 
@@ -17,8 +20,13 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword }) => {
 		setError(password ? "" : 'Password is required.')
 
 		if (!password) return
-		onSubmitPassword(password)
+		const privateKey = onSubmitPassword(password)
+		if(!privateKey){
+			toast.error('Incorrect password!')
+		}
 	}
+
+	const { ref } = useFocusInput({ isModalOpen })
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
@@ -30,6 +38,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ onSubmitPassword }) => {
 				onChange={(e) => setPassword(e.target.value)}
 				required
 				errorMessage={error}
+				ref={ref}
 			/>
 			<Button label="View Private Key" type="submit" />
 		</form>

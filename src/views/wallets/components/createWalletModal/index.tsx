@@ -5,6 +5,7 @@ import Input from '../../../../components/input'
 import Button from '../../../../components/button'
 import { useWalletStore } from '../../../../store'
 import toast from 'react-hot-toast'
+import { useFocusInput } from '../../../../hooks/useFocusInput'
 
 type CreateWalletModalProps = {
 	setIsModalOpen: (isModalOpen: boolean) => void
@@ -38,6 +39,8 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 		setPassword('')
 	}
 
+	const { ref } = useFocusInput({ isModalOpen })
+
 	return (
 		<Modal title="Create a New Wallet" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 			<form
@@ -53,6 +56,7 @@ const CreateWalletModal: React.FC<CreateWalletModalProps> = ({ isModalOpen, setI
 					value={walletName}
 					onChange={(e) => setWalletName(e.target.value)}
 					required
+					ref={ref}
 					errorMessage={errors.walletName}
 				/>
 				<Input

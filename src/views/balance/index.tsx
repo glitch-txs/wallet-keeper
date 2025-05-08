@@ -11,6 +11,7 @@ import NetworkSelector from './components/networkSelector'
 import * as viemChains from 'viem/chains'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { useFocusInput } from '../../hooks/useFocusInput'
 
 const Balance: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -46,6 +47,8 @@ const Balance: React.FC = () => {
 		navigation('/')
 	}
 
+	const { ref } = useFocusInput({ isModalOpen })
+
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}>Your Balance</h1>
@@ -79,6 +82,7 @@ const Balance: React.FC = () => {
 						value={newTokenAddress}
 						onChange={(e) => setNewTokenAddress(e.target.value)}
 						required
+						ref={ref}
 						errorMessage={error}
 					/>
 					<Button label="Add Token" type="submit" />

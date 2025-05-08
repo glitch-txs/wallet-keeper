@@ -53,10 +53,15 @@ const WalletList: React.FC = () => {
 		const { encryptedPrivateKey, salt } = wallet
 		const _privateKey = decryptPrivateKey({ password, encryptedPrivateKey, salt })
 
-		if (!_privateKey) throw Error('Error while decrypting private key.')
+		if (!_privateKey){
+			console.error('Error while decrypting private key.')
+			return null
+		}
 
 		setPrivateKey(_privateKey)
 		setModalView(KEY_MODAL_VIEWS.WALLET_INFO)
+		
+		return _privateKey
 	}
 
 	function handleCloseModal() {
@@ -86,7 +91,7 @@ const WalletList: React.FC = () => {
 
 			<Modal title="Wallet Details" isOpen={isModalOpen} onClose={handleCloseModal}>
 				{modalView === KEY_MODAL_VIEWS.REQUEST_PASSWORD ? (
-					<PasswordForm onSubmitPassword={handleSubmitPassword} />
+					<PasswordForm onSubmitPassword={handleSubmitPassword} isModalOpen={isModalOpen} />
 				) : (
 					<WalletInfo
 						onModalClose={handleCloseModal}
