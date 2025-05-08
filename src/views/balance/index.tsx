@@ -35,6 +35,7 @@ const Balance: React.FC = () => {
 		} else {
 			toast.error('An error occurred!')
 		}
+		setNewTokenAddress('')
 		setIsModalOpen(false)
 	}
 
@@ -64,7 +65,7 @@ const Balance: React.FC = () => {
 					<Button label="Add Token" onClick={() => setIsModalOpen(true)} />
 				</div>
 				<BalanceCard userAddress={activeWallet?.address as Address} chain={activeChain} />
-				{tokens.map((token) => (
+				{tokens.filter(t => t.chainId === activeChain.id).map((token) => (
 					<BalanceCard userAddress={activeWallet?.address as Address} chain={activeChain} token={token} />
 				))}
 			</div>
