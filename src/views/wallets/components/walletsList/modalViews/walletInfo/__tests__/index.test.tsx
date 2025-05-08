@@ -1,11 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import WalletInfo from '..'
+import toast from 'react-hot-toast'
+
+vi.mock('react-hot-toast', () => ({
+	default: {
+		success: vi.fn(),
+	},
+}))
 
 describe('WalletInfo Component', () => {
 	const mockOnModalClose = vi.fn()
 	const mockWriteText = vi.fn()
-	const mockAlert = vi.fn()
 
 	beforeAll(() => {
 		Object.defineProperty(navigator, 'clipboard', {
@@ -14,7 +20,6 @@ describe('WalletInfo Component', () => {
 			},
 			writable: true,
 		})
-		window.alert = mockAlert
 	})
 
 	const defaultProps = {
@@ -42,7 +47,7 @@ describe('WalletInfo Component', () => {
 		fireEvent.click(copyIcons[0])
 
 		expect(mockWriteText).toHaveBeenCalledWith('0x1234...abcd')
-		expect(mockAlert).toHaveBeenCalledWith('Copied to clipboard!')
+		expect(toast.success).toHaveBeenCalledWith('Copied to clipboard!')
 	})
 
 	it('should copy the private key to clipboard when clicking the copy icon', () => {
@@ -52,7 +57,7 @@ describe('WalletInfo Component', () => {
 		fireEvent.click(copyIcons[0])
 
 		expect(mockWriteText).toHaveBeenCalledWith('abcd1234efgh5678')
-		expect(mockAlert).toHaveBeenCalledWith('Copied to clipboard!')
+		expect(toast.success).toHaveBeenCalledWith('Copied to clipboard!')
 	})
 
 	it('should call onModalClose when clicking the Close button', () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 import Button from '../../../../../../components/button'
+import toast from 'react-hot-toast'
 
 interface WalletInfoProps {
 	name: string
@@ -12,7 +13,7 @@ interface WalletInfoProps {
 const WalletInfo: React.FC<WalletInfoProps> = ({ name, address, privateKey, onModalClose }) => {
 	const handleCopy = (value: string) => {
 		navigator.clipboard.writeText(value)
-		alert('Copied to clipboard!')
+		toast.success('Copied to clipboard!')
 	}
 
 	return (
